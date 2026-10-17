@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+
+<body>
+{%block content %}
+
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+    {%if mensajes %}
+    {% for categoria, mensaje in mensajes %}
+
+    <div class = "{{categoria}}">{{mensaje}}</div>
+
+    {%endfor%} {%endif%} {%endwith%}
+
+
+    <h1> inicia sesion </h1>
+    <form class="form-login" action="{{ url_for('login')}}" method="post">
+        <div>
+            <label for="user">usuario</label>
+            <input name="user" id="user" type="text">
+        </div>
+        <div>
+            <label for="password">contraseña</label>
+            <input name="password" id="password" type="password">
+        </div>
+        <div>
+            <input type="submit" name="enviar" value="INICIAR SESION">
+        </div>
+    </form>
+    <div> 
+        <h1> no tienes cuenta crea una</h1>
+        <input type="submit" name="enviar" value="crear cuenta">
+    </div>
+
+
+{% endblock %}
+</body>
+
+</html>
